@@ -1,5 +1,25 @@
+import os
 from aiogram import Bot
 from database.db import DatabaseConfig
+
+# Get configuration from environment variables
+BOT_TOKEN = os.environ.get('BOT_TOKEN', '8299427995:AAEWUFt-OmdEHOT0ZlPEoJi6mxutiiLmzCU')
+DB_USER = os.environ.get('DB_USER', 'postgres')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', '858006')
+DB_NAME = os.environ.get('DB_NAME', 'soft_bot')
+DB_HOST = os.environ.get('DB_HOST', 'localhost')
+DB_PORT = int(os.environ.get('DB_PORT', '5432'))
+
+Bot_Tokken = Bot(token=BOT_TOKEN)
+
+db = DatabaseConfig(
+    user=DB_USER,
+    password=DB_PASSWORD,
+    db_name=DB_NAME,
+    host=DB_HOST,
+    port=DB_PORT
+)
+
 
 # Правильный способ указать прокси (если он ОБЯЗАТЕЛЬНО нужен):
 # from aiogram.client.session.aiohttp import AiohttpSession
@@ -7,20 +27,7 @@ from database.db import DatabaseConfig
 # Bot_Tokken = Bot(token='ВАШ_ТОКЕН', session=session)
 
 # Создаем бота БЕЗ прокси для начала (убедитесь, что соединение работает)
-Bot_Tokken = Bot(token='8299427995:AAEWUFt-OmdEHOT0ZlPEoJi6mxutiiLmzCU')
-
-db = DatabaseConfig(
-    user='postgres',
-    password='858006',
-    db_name='soft_bot',
-    host='localhost',
-    port=5432
-)
-
-
-
-
-
+# Bot_Tokken = Bot(token='8299427995:AAEWUFt-OmdEHOT0ZlPEoJi6mxutiiLmzCU')
 
 
 
